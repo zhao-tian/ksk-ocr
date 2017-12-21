@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # top_model.load_weights(os.path.join(result_dir, 'bottleneck_fc_model.h5'))
 
     # VGG16とFCを接続
-    model = Model(input=vgg16.input, output=top_model(vgg16.output))
+    model = Model(inputs=vgg16.input, outputs=top_model(vgg16.output))
 
     # 最後のconv層の直前までの層をfreeze
     for layer in model.layers[:15]:
@@ -93,10 +93,10 @@ if __name__ == '__main__':
     # Fine-tuning
     history = model.fit_generator(
         train_generator,
-        samples_per_epoch=nb_train_samples,
-        nb_epoch=nb_epoch,
-        validation_data=validation_generator,
-        nb_val_samples=nb_val_samples)
+        steps_per_epoch = nb_train_samples,
+        epochs =nb_epoch,
+        validation_data = validation_generator,
+        validation_steps = nb_val_samples)
 
     model.save_weights(os.path.join(result_dir, 'finetuning.h5'))
     save_history(history, os.path.join(result_dir, 'history_finetuning.txt'))
