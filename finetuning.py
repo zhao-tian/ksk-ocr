@@ -20,7 +20,8 @@ nb_classes = len(classes)
 img_rows, img_cols = 150, 150
 channels = 3
 
-DATA_ROOT = "/Volumes/deepstation/ocr-20171221/"
+#DATA_ROOT = "/Volumes/deepstation/ocr-20171221/"
+DATA_ROOT = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/ocr-20171221/"
 train_data_dir = DATA_ROOT + 'train_images'
 validation_data_dir = DATA_ROOT + 'test_images'
 
