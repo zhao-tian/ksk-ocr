@@ -9,25 +9,23 @@ import numpy as np
 from smallcnn import save_history
 
 
-classes = ['Tulip', 'Snowdrop', 'LilyValley', 'Bluebell', 'Crocus',
-           'Iris', 'Tigerlily', 'Daffodil', 'Fritillary', 'Sunflower',
-           'Daisy', 'ColtsFoot', 'Dandelion', 'Cowslip', 'Buttercup',
-           'Windflower', 'Pansy']
+classes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 batch_size = 32
 nb_classes = len(classes)
 
-img_rows, img_cols = 150, 150
+img_rows, img_cols = 56, 56
 channels = 3
 
 #DATA_ROOT = "/Volumes/deepstation/ocr-20171221/"
-DATA_ROOT = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/ocr-20171221/"
-train_data_dir = DATA_ROOT + 'train_images'
-validation_data_dir = DATA_ROOT + 'test_images'
+#DATA_ROOT = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/ocr-20171221/"
+DATA_ROOT = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/1j-ocr-20171221/"
+train_data_dir = DATA_ROOT + 'train'
+validation_data_dir = DATA_ROOT + 'val'
 
-nb_train_samples = 1190
-nb_val_samples = 170
-nb_epoch = 50
+nb_train_samples = (80*11)
+nb_val_samples = (20*11-6-1)
+nb_epoch = 500
 
 result_dir = 'results'
 if not os.path.exists(result_dir):
