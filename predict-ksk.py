@@ -11,9 +11,9 @@ from datetime import datetime
 classes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
 result_dir = 'results'
 model_name = "finetuning-ksk.h5"
-TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/classification"
-#TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/gt"
-IS_NEED_2_COPY = True
+#TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/classification"
+TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/gt"
+IS_NEED_2_COPY = False
 
 nb_classes = len(classes)
 

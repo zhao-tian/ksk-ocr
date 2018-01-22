@@ -25,7 +25,7 @@ nb_train_samples = os_utils.countFilesOf(train_data_dir, 'jpg')
 print("train files: " + str(nb_train_samples))
 nb_val_samples = os_utils.countFilesOf(validation_data_dir, 'jpg')
 print("val files: " + str(nb_val_samples))
-nb_epoch = 200
+nb_epoch = 300
 
 result_dir = 'results'
 if not os.path.exists(result_dir):
