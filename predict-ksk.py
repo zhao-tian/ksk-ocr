@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 from keras.applications.vgg16 import VGG16
@@ -13,7 +14,7 @@ result_dir = 'results'
 model_name = "finetuning-ksk.h5"
 #TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/classification"
 TestDir = "/media/deepstation/df661f44-30ab-4e78-be4b-85a6014ac61d/deepstation/prj_data/ai-ocr/gt"
-IS_NEED_2_COPY = False
+IS_NEED_2_COPY = True
 
 nb_classes = len(classes)
 
@@ -97,7 +98,7 @@ createDir(PreDir)
 for i in range(len(classes)):
    dirPath = os.path.join(PreDir, classes[i])
    createDir(dirPath)
-ResultDir = os.path.join(TestDir, 'result.csv')
+ResultDir = os.path.join(PreDir, 'result.csv')
 files = [os.path.join(root, name)
              for root, dirs, files in os.walk(TestDir)
              for name in files
@@ -110,20 +111,20 @@ for i in range(len(files)):
   predResult = getPredictTop5(filePath)
   gt = filePath.split('/')[-2]
   re = predResult.split(',')[0]
-  predCls = getPredictCls(filePath)
-  if IS_NEED_2_COPY:
-    dstPath = os.path.join(PreDir, predCls)
-    dstPath = os.path.join(dstPath, os.path.basename(files[i]))
-    try:
-       shutil.copyfile(filePath, dstPath)
-       print(dstPath)
-    except shutil.SameFileError:
-       print("the same file")
 
   if not gt == re:
     mis += 1
     result = (filePath.split('/')[-2]) + "," + (filePath.split('/')[-1]) + "," + str(predResult)
     resultList.append(result)
+    predCls = getPredictCls(filePath)
+    if IS_NEED_2_COPY:
+      dstPath = os.path.join(PreDir, predCls)
+      dstPath = os.path.join(dstPath, os.path.basename(files[i]))
+      try:
+         shutil.copyfile(filePath, dstPath)
+         print(dstPath)
+      except shutil.SameFileError:
+         print("the same file")
 
 f = open(ResultDir, 'w')
 for i in range(len(resultList)):
